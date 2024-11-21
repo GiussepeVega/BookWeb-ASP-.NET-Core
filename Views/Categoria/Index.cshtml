@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Categoria>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<partial name="_Notificaciones"></partial>
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Listado de Categorias</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a class="btn btn-warning" asp-controller="Categoria" asp-action="Create">
+                <i class="bi bi-plus-circle"></i>
+                  Crear Categoria
+            </a>
+        </div>
+    </div>
+</div>
+
+<br />
+
+<table class="table table-bordered table-striped" style="width:100%">
+<thead>
+    <tr>
+        <th>
+            Nombre Categoria
+        </th>
+        <th>
+            Order
+        </th>
+        <th></th>
+    </tr>
+</thead>    
+<tbody>
+        @foreach (var obj in Model)
+        {
+            <tr>
+                <td width="50%">
+                    @obj.nombre
+                </td>
+                <td width="35%">
+                    @obj.order
+                </td>
+                <td>
+                    <a class="btn btn-info" asp-controller="Categoria" asp-action="Edit" asp-route-id="@obj.id">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <a class="btn btn-danger" asp-controller="Categoria" asp-action="Delete" asp-route-id="@obj.id">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
